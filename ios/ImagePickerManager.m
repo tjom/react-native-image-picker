@@ -7,6 +7,16 @@
 
 @import MobileCoreServices;
 
+@interface LandscapeUIImagePickerController : UIImagePickerController {
+}
+@end
+
+@implementation LandscapeUIImagePickerController
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskLandscape;
+}
+@end
+
 @interface ImagePickerManager ()
 
 @property (nonatomic, strong) RCTResponseSenderBlock callback;
@@ -61,7 +71,7 @@ RCT_EXPORT_METHOD(launchImageLibrary:(NSDictionary *)options callback:(RCTRespon
         }
     }
 
-    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    LandscapeUIImagePickerController *picker = [[LandscapeUIImagePickerController alloc] init];
     [ImagePickerUtils setupPickerFromOptions:picker options:self.options target:target];
     picker.delegate = self;
 
